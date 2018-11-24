@@ -1,0 +1,15 @@
+div.panel {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+div.panel img {
+  width: auto;
+  max-width: 85vw;
+  height: auto;
+  max-height: calc(100vh - 10rem);
+  padding: 5px;
+  background-color: white;
+  filter: drop-shadow(5px 5px 5px #bfbfbf);
+}

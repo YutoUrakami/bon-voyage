@@ -1,0 +1,13 @@
+@import '../node_modules/bulma/css/bulma.css';
+
+html {
+  overflow-y: hidden;
+}
+
+body {
+  font-family: "Advent Pro", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("assets/images/background.jpg");
+}

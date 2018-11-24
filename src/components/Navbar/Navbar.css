@@ -1,0 +1,32 @@
+.navbar {
+  background-color: transparent !important;
+}
+.navbar-brand .navbar-item .main-brand {
+  font-size: 1.5em;
+}
+
+.navbar-brand .navbar-item.sub-brand {
+  font-size: 1em;
+  padding-left: 0px;
+}
+
+.navbar-menu a.navbar-item {
+  font-size: 1.2em;
+  margin: 0 10px 0;
+  text-decoration: none;
+}
+.navbar-menu a.navbar-item:hover {
+  text-decoration: none;
+}
+.navbar-menu a.navbar-item:visited {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar-menu a.navbar-item:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-menu .navbar-end {
+  margin-right: 50px;
+}
