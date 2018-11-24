@@ -1,7 +1,19 @@
 import * as React from 'react';
+import * as cloudFunctions from '../../services/cloudFunctions'
 import './Navbar.css';
 
-class Navbar extends React.Component {
+interface IState {
+  folders: string[]
+}
+
+class Navbar extends React.Component<{}, IState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      folders: []
+    }
+  }
+  
   public render() {
     return (
       <nav className="navbar is-transparent is-fixed-bottom-desktop" role="navigation" aria-label="main navigation">
@@ -18,12 +30,19 @@ class Navbar extends React.Component {
         </div>
         <div className="navbar-menu">
           <div className="navbar-end">
-            <a className="navbar-item"> kou </a> <a className="navbar-item"> portraits </a>
-            <a className="navbar-item"> snaps </a>
+            {this.state.folders.map((folder) => {
+              return <a className="navbar-item" key={folder} href={`/${folder}`}> {folder} </a>
+            })}
           </div>
         </div>
       </nav>
     );
+  }
+  
+  public componentWillMount() {
+    cloudFunctions.listFolders().then((folderNames: string[]) => {
+      this.setState({folders: folderNames})
+    });
   }
 }
 
