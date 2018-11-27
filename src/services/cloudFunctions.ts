@@ -11,10 +11,9 @@ export const listImagesByTag = async (tag: string) => {
     { params: { "tag": tag } }
     );
   const resources: Array<{ [key: string]: any }> = res.data.resources;
-  return resources.map((resource, index) => {
+  return resources.map((resource) => {
     return {
       'publicId': resource.public_id,
-      'show': index === 0,
       'src': resource.url
     }
   });

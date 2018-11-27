@@ -1,21 +1,20 @@
 import * as React from 'react';
-import * as cloudFunctions from '../../services/cloudFunctions'
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
 
 interface IProps {
-  tag: string
+  images: Array<{ [key: string]: any }>,
 }
 
 interface IState {
-  images: Array<{ [key: string]: any }>,
+  showFlags: boolean[],
 }
 
 class SlideShow extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      images: []
+      showFlags: []
     }
   }
 
@@ -23,8 +22,8 @@ class SlideShow extends React.Component<IProps, IState> {
     return (
       <div className="slide-container">
         <div className="slide-box">
-          {this.state.images.filter((img) =>
-            img.show
+          {this.props.images.filter((img, index) =>
+            this.state.showFlags[index]
           ).map((img) =>
             <Panel srcURL={img.src} key={img.publicId}/>
           )}
@@ -43,39 +42,41 @@ class SlideShow extends React.Component<IProps, IState> {
     )
   }
   
-  public componentWillMount() {
-    cloudFunctions.listImagesByTag(this.props.tag)
-      .then((data) => {
-        this.setState({images: data});
-      })
+  public componentWillReceiveProps(nextProps: IProps) {
+    const nextShowFlags = nextProps.images.map((img) => {
+      return img.show;
+    });
+    this.setState({showFlags: nextShowFlags})
+  }
+  
+  public shouldComponentUpdate() {
+    return true;
   }
   
   private changeDisplayImage = (nextShowIndex: number) => {
-    this.state.images.forEach((img, index) => {
-      const imagesCopy = this.state.images.slice();
-      imagesCopy[index].show = nextShowIndex === index;
-      this.setState({images: imagesCopy})
+    const nextFlags = this.state.showFlags.map((flg, index) => {
+      return nextShowIndex === index;
     });
-
+    this.setState({showFlags: nextFlags})
   };
 
   private searchCurrentShowingIndex = () => {
-    return this.state.images.findIndex((img) => {
-      return img.show;
+    return this.state.showFlags.findIndex((flag) => {
+      return flag;
     });
   };
 
   private onClickLeft = () => {
     let nextShowIndex = this.searchCurrentShowingIndex() - 1;
     if (nextShowIndex < 0) {
-      nextShowIndex = this.state.images.length - 1;
+      nextShowIndex = this.state.showFlags.length - 1;
     }
     this.changeDisplayImage(nextShowIndex);
   };
 
   private onClickRight = () => {
     let nextShowIndex = this.searchCurrentShowingIndex() + 1;
-    if (this.state.images.length <= nextShowIndex) {
+    if (this.state.showFlags.length <= nextShowIndex) {
       nextShowIndex = 0;
     }
     this.changeDisplayImage(nextShowIndex);

@@ -3,7 +3,7 @@ import {Route, Switch} from "react-router";
 import Kou from '../Kou/Kou'
 import Navbar from '../Navbar/Navbar';
 import Portraits from '../Portraits/Portraits';
-import SlideShow from '../SlideShow/SlideShow';
+import Top from '../Top/Top';
 import './App.css';
 
 class App extends React.Component {
@@ -12,16 +12,12 @@ class App extends React.Component {
       <div className="App">
         <Navbar/>
         <Switch>
-          <Route exact={true} path="/" render={this.topPage} />
+          <Route exact={true} path="/" component={Top} />
           <Route path="/kou" component={Kou}/>
           <Route path="/portraits" component={Portraits}/>
         </Switch>
       </div>
     );
-  }
-  
-  private topPage() {
-    return <SlideShow tag={"top"}/>
   }
 }
 
