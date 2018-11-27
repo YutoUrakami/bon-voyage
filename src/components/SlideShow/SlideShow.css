@@ -16,7 +16,7 @@ html {
 .slide-navigation-left {
   position: absolute;
   height: inherit;
-  width: 5vw;
+  width: 50px;
   left: 0;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@ html {
 .slide-navigation-right {
   position: absolute;
   height: inherit;
-  width: 5vw;
+  width: 50px;
   right: 0;
   display: flex;
   align-items: center;
