@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Route, Switch} from "react-router";
+import Kou from '../Kou/Kou'
 import Navbar from '../Navbar/Navbar';
 import Portraits from '../Portraits/Portraits';
 import SlideShow from '../SlideShow/SlideShow';
@@ -12,7 +13,8 @@ class App extends React.Component {
         <Navbar/>
         <Switch>
           <Route exact={true} path="/" render={this.topPage} />
-          <Route exact={true} path="/:folder" component={Portraits}/>
+          <Route path="/kou" component={Kou}/>
+          <Route path="/portraits" component={Portraits}/>
         </Switch>
       </div>
     );

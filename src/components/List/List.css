@@ -1,0 +1,17 @@
+.folder-tree-root {
+  display: flex;
+  justify-content: center;
+}
+
+.folder-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: 25px !important;
+  max-width: 1920px;
+}
+
+.folder-item {
+}

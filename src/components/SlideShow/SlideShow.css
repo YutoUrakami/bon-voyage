@@ -1,3 +1,7 @@
+html {
+  overflow-y: hidden !important;
+}
+
 .slide-container {
   width: 100vw;
   height: calc(100vh - 3.25rem);

@@ -34,10 +34,9 @@ export const listImagesInFolder = async (folderName: string) => {
     {params: {"folder_name": folderName}}
     );
   const resources: Array<{ [key: string]: any }> = res.data.resources;
-  return resources.map((resource, index) => {
+  return resources.map((resource) => {
     return {
       'publicId': resource.public_id,
-      'show': index === 0,
       'src': resource.url
     }
   });
