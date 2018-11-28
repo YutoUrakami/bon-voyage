@@ -22,10 +22,10 @@ class List extends React.Component<ListProps, ListState> {
   public render() {
     return (
       <div className="folder-tree-root">
-        <div className="folder-container columns">
+        <div className="folder-container">
           {this.state.images.map((img) => {
             return (
-              <div key={img.publicId} className="column is-2-desktop is-one-third-tablet is-half-mobile">
+              <div key={img.publicId} className="folder-item">
                 <img src={this.imgThumbnailUrl(img.src)}/>
               </div>
             )
@@ -49,7 +49,7 @@ class List extends React.Component<ListProps, ListState> {
   private imgThumbnailUrl = (originalUrl: string): string => {
     const searchStr = '/image/upload/';
     const insertIndex = originalUrl.indexOf(searchStr) + searchStr.length;
-    return [originalUrl.slice(0, insertIndex), `c_thumb,h_320,w_320/`, originalUrl.slice(insertIndex)].join('');
+    return [originalUrl.slice(0, insertIndex), `c_thumb,h_1000,w_1000/`, originalUrl.slice(insertIndex)].join('');
   };
 }
 

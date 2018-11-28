@@ -1,17 +1,49 @@
 .folder-tree-root {
   display: flex;
   justify-content: center;
+  position: absolute;
 }
+@media screen and (max-width: 1087px) {
+  .folder-tree-root{
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1088px) {
+  .folder-tree-root {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: calc(100% + 17px);
+    height: 100%;
+  }
+} 
 
 .folder-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   align-content: flex-start;
-  margin: 25px !important;
-  max-width: 1920px;
+  margin: 2px 0;
+  width: 100vw;
 }
 
 .folder-item {
+  width: 19.8vw;
+  height: 19.8vw;
+  margin: 0.11vw 0;
+}
+
+@media screen and (max-width: 786px) {
+  .folder-item {
+    width: 49.8vw;
+    height: 49.8vw;
+    margin: 0.2vw 0;
+  }
+}
+@media screen and (max-width: 1920px) and (min-width: 787px) {
+  .folder-item {
+    width: 24.8vw;
+    height: 24.8vw;
+    margin: calc(0.4vw / 3) 0;
+  }
 }
