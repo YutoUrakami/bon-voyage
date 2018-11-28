@@ -2,15 +2,15 @@ import * as React from 'react';
 import * as cloudFunctions from '../../services/cloudFunctions';
 import './/List.css'
 
-interface IProps {
+interface ListProps {
   folderName: string
 }
 
-interface IState {
+interface ListState {
   images: Array<{ [key: string]: any }>
 }
 
-class List extends React.Component<IProps, IState> {
+class List extends React.Component<ListProps, ListState> {
   constructor(props: any) {
     super(props);
     this.state = {

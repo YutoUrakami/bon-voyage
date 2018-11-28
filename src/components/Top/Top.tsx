@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as cloudFunctions from '../../services/cloudFunctions'
 import SlideShow from '../SlideShow/SlideShow';
 
-interface IState {
+interface TopState {
   images: Array<{ [key: string]: any }>,
 }
 
-class Top extends React.Component<{}, IState> {
+class Top extends React.Component<{}, TopState> {
   constructor(props: any) {
     super(props);
     this.state = {

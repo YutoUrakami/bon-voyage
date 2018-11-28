@@ -7,5 +7,15 @@
       "coverage/lcov-report/*.js"
     ]
   },
-  "interface-name" : [true, "never-prefix"]
+  "rules": {
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ]
+  }
 }

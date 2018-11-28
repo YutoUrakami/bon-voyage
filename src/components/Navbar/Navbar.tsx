@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom'
 import * as cloudFunctions from '../../services/cloudFunctions'
 import './Navbar.css';
 
-interface IState {
+interface NavbarState {
   folders: string[]
 }
 
-class Navbar extends React.Component<{}, IState> {
+class Navbar extends React.Component<{}, NavbarState> {
   constructor(props: any) {
     super(props);
     this.state = {

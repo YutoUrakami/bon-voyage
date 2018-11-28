@@ -2,15 +2,15 @@ import * as React from 'react';
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
 
-interface IProps {
+interface SlideShowProps {
   images: Array<{ [key: string]: any }>,
 }
 
-interface IState {
+interface SlideShowState {
   showFlags: boolean[],
 }
 
-class SlideShow extends React.Component<IProps, IState> {
+class SlideShow extends React.Component<SlideShowProps, SlideShowState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -42,7 +42,7 @@ class SlideShow extends React.Component<IProps, IState> {
     )
   }
   
-  public componentWillReceiveProps(nextProps: IProps) {
+  public componentWillReceiveProps(nextProps: SlideShowProps) {
     const nextShowFlags = nextProps.images.map((img) => {
       return img.show;
     });
