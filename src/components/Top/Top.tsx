@@ -1,9 +1,10 @@
 import * as React from 'react';
+import {Image, toViewableArray} from '../../models/image'
 import * as cloudFunctions from '../../services/cloudFunctions'
 import SlideShow from '../SlideShow/SlideShow';
 
 interface TopState {
-  images: Array<{ [key: string]: any }>,
+  images: Image[]
 }
 
 class Top extends React.Component<{}, TopState> {
@@ -20,14 +21,8 @@ class Top extends React.Component<{}, TopState> {
 
   public componentWillMount() {
     cloudFunctions.listImagesByTag('top')
-      .then((images) => {
-        this.setState({
-          images: images.map((img, index) => {
-            const copy: { [key: string]: any } = img;
-            copy.show = index === 0;
-            return copy;
-          })
-        });
+      .then((images: Image[]) => {
+        this.setState({images: toViewableArray(images, 0)});
       })
   }
 }

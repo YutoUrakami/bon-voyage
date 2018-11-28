@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Image} from '../../models/image'
 import * as cloudFunctions from '../../services/cloudFunctions';
 import './/List.css'
 
@@ -7,7 +8,7 @@ interface ListProps {
 }
 
 interface ListState {
-  images: Array<{ [key: string]: any }>
+  images: Image[]
 }
 
 class List extends React.Component<ListProps, ListState> {

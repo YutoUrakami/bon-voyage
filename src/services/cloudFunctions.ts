@@ -1,22 +1,23 @@
 import axios = require('axios');
 import env = require('../env');
+import {Image} from '../models/image'
 
 const cloudFunctions = axios.default.create({
   baseURL: `https://${env.cloudFunctionsHost}`
 });
+
+const toImagesArray = (resources: Array<{ [key: string]: any }>) => {
+  return resources.map((resource) => {
+    return new Image(resource.public_id, resource.url)
+  });
+}; 
 
 export const listImagesByTag = async (tag: string) => {
   const res = await cloudFunctions.get(
     "/list_cloudinary_images_by_tag",
     { params: { "tag": tag } }
     );
-  const resources: Array<{ [key: string]: any }> = res.data.resources;
-  return resources.map((resource) => {
-    return {
-      'publicId': resource.public_id,
-      'src': resource.url
-    }
-  });
+  return toImagesArray(res.data.resources);
 };
 
 export const listFolders = async () => {
@@ -32,11 +33,5 @@ export const listImagesInFolder = async (folderName: string) => {
     "/list_cloudinary_images_in_folder",
     {params: {"folder_name": folderName}}
     );
-  const resources: Array<{ [key: string]: any }> = res.data.resources;
-  return resources.map((resource) => {
-    return {
-      'publicId': resource.public_id,
-      'src': resource.url
-    }
-  });
+  return toImagesArray(res.data.resources);
 };
