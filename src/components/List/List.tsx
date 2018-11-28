@@ -49,7 +49,7 @@ class List extends React.Component<ListProps, ListState> {
   private imgThumbnailUrl = (originalUrl: string): string => {
     const searchStr = '/image/upload/';
     const insertIndex = originalUrl.indexOf(searchStr) + searchStr.length;
-    return [originalUrl.slice(0, insertIndex), `c_thumb,h_1000,w_1000/`, originalUrl.slice(insertIndex)].join('');
+    return [originalUrl.slice(0, insertIndex), `c_thumb,h_720,w_720/`, originalUrl.slice(insertIndex)].join('');
   };
 }
 
