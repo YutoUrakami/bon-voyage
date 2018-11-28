@@ -6,10 +6,18 @@ div.panel {
 }
 div.panel img {
   width: auto;
-  max-width: calc(100% - 10px);
+  max-width: 90vw;
   height: auto;
   max-height: 100%;
   padding: 5px;
   background-color: white;
-  filter: drop-shadow(5px 5px 5px #bfbfbf);
+  filter: drop-shadow(7px 7px 7px #bfbfbf);
+}
+
+@media screen and (max-width: 768px) {
+  div.panel img {
+    max-width: 100%;
+    padding: 0;
+    filter: drop-shadow(0px 0px 0px #bfbfbf);
+  }
 }
