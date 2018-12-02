@@ -8,7 +8,7 @@ div.panel img {
   width: auto;
   max-width: 90vw;
   height: auto;
-  max-height: 100%;
+  max-height: calc(100vh - 3.25rem);
   padding: 5px;
   background-color: white;
   filter: drop-shadow(7px 7px 7px #bfbfbf);
