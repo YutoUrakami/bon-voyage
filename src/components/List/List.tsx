@@ -28,7 +28,7 @@ class List extends React.Component<ListProps, ListState> {
               <div key={img.publicId} className="folder-item">
                 <img src={this.imgThumbnailUrl(img.src)}/>
                 <div className="folder-item-mask">
-                  <div className="caption">description</div>
+                  <div className="caption">{img.caption}</div>
                 </div>
               </div>
             )
@@ -43,7 +43,7 @@ class List extends React.Component<ListProps, ListState> {
       .then((data) => {
         this.setState({
           images: data.sort((a, b) => {
-            return a.publicId < b.publicId ? -1 : 1
+            return a.publicId < b.publicId ? 1 : -1
           })
         })
       })

@@ -1,11 +1,14 @@
 export class Image {
-  constructor(private _publicId: string, private _src: string, private _show: boolean = false) {
+  constructor(private _publicId: string, private _src: string, private _caption: any, private _show: boolean = false) {
   }
   get publicId(): string {
     return this._publicId;
   }
   get src(): string {
     return this._src;
+  }
+  get caption(): any {
+    return this._caption;
   }
   get show(): boolean {
     return this._show;

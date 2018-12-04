@@ -6,9 +6,20 @@ const cloudFunctions = axios.default.create({
   baseURL: `https://${env.cloudFunctionsHost}`
 });
 
+const getCaption = (context?: { [key: string]: any }) => {
+  if (!context) {
+    return ''
+  }
+  const custom = context.custom;
+  if (!custom) {
+    return ''
+  }
+  return custom.caption;
+};
+
 const toImagesArray = (resources: Array<{ [key: string]: any }>) => {
   return resources.map((resource) => {
-    return new Image(resource.public_id, resource.url)
+    return new Image(resource.public_id, resource.secure_url, getCaption(resource.context))
   });
 }; 
 
