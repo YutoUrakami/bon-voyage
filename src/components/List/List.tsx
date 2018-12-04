@@ -27,6 +27,9 @@ class List extends React.Component<ListProps, ListState> {
             return (
               <div key={img.publicId} className="folder-item">
                 <img src={this.imgThumbnailUrl(img.src)}/>
+                <div className="folder-item-mask">
+                  <div className="caption">description</div>
+                </div>
               </div>
             )
           })}

@@ -4,12 +4,13 @@
   position: absolute;
   width: 100vw;
 }
+
 @media screen and (min-width: 1024px) {
   .folder-tree-root {
     overflow-x: hidden;
     overflow-y: scroll;
   }
-} 
+}
 
 .folder-container {
   display: flex;
@@ -23,6 +24,7 @@
   width: 19.7vw;
   height: 19.7vw;
   margin: 0.1vw 0;
+  position: relative;
 }
 
 @media screen and (max-width: 768px) {
@@ -32,6 +34,7 @@
     margin: 0.15vw 0;
   }
 }
+
 @media screen and (max-width: 1023px) and (min-width: 769px) {
   .folder-item {
     width: 24.8vw;
@@ -39,10 +42,36 @@
     margin: 0.14vw 0;
   }
 }
+
 @media screen and (max-width: 1920px) and (min-width: 1024px) {
   .folder-item {
     width: 24.6vw;
     height: 24.6vw;
     margin: 0.12vw 0;
   }
+}
+
+.folder-item .caption {
+  font-size: 2em;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.folder-item-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.folder-item:hover .folder-item-mask {
+  opacity: 1;
 }
