@@ -1,20 +1,19 @@
 import * as React from 'react';
+import {connect} from "react-redux";
+import {Image} from "../../models/image";
+import {ImagesListState} from "../../store";
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
 
 interface SlideShowProps {
-  images: Array<{ [key: string]: any }>,
+  images: Image[]
 }
 
-interface SlideShowState {
-  showFlags: boolean[],
-}
-
-class SlideShow extends React.Component<SlideShowProps, SlideShowState> {
+class SlideShow extends React.Component<SlideShowProps> {
   constructor(props: any) {
     super(props);
     this.state = {
-      showFlags: []
+      update: false
     }
   }
 
@@ -23,7 +22,7 @@ class SlideShow extends React.Component<SlideShowProps, SlideShowState> {
       <div className="slide-container">
         <div className="slide-box">
           {this.props.images.filter((img, index) =>
-            this.state.showFlags[index]
+            index === 0 // TODO: path parameterで受け取る
           ).map((img) =>
             <Panel srcURL={img.src} key={img.publicId}/>
           )}
@@ -42,45 +41,19 @@ class SlideShow extends React.Component<SlideShowProps, SlideShowState> {
     )
   }
   
-  public componentWillReceiveProps(nextProps: SlideShowProps) {
-    const nextShowFlags = nextProps.images.map((img) => {
-      return img.show;
-    });
-    this.setState({showFlags: nextShowFlags})
-  }
-  
-  public shouldComponentUpdate() {
-    return true;
-  }
-  
-  private changeDisplayImage = (nextShowIndex: number) => {
-    const nextFlags = this.state.showFlags.map((flg, index) => {
-      return nextShowIndex === index;
-    });
-    this.setState({showFlags: nextFlags})
-  };
-
-  private searchCurrentShowingIndex = () => {
-    return this.state.showFlags.findIndex((flag) => {
-      return flag;
-    });
-  };
-
   private onClickLeft = () => {
-    let nextShowIndex = this.searchCurrentShowingIndex() - 1;
-    if (nextShowIndex < 0) {
-      nextShowIndex = this.state.showFlags.length - 1;
-    }
-    this.changeDisplayImage(nextShowIndex);
+    // TODO
+    return
   };
 
   private onClickRight = () => {
-    let nextShowIndex = this.searchCurrentShowingIndex() + 1;
-    if (this.state.showFlags.length <= nextShowIndex) {
-      nextShowIndex = 0;
-    }
-    this.changeDisplayImage(nextShowIndex);
+    // TODO
+    return
   };
 }
 
-export default SlideShow;
+export default connect(
+  (state: ImagesListState): SlideShowProps => {
+    return {images: state.list}
+  }
+)(SlideShow);

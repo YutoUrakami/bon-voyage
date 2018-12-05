@@ -1,30 +1,21 @@
 import * as React from 'react';
-import {Image, toViewableArray} from '../../models/image'
-import * as cloudFunctions from '../../services/cloudFunctions'
+import {connect} from 'react-redux'
+import {Dispatch} from "redux";
+import {listingByTag} from "../../reducers/imagesListReducer";
 import SlideShow from '../SlideShow/SlideShow';
 
-interface TopState {
-  images: Image[]
+interface DispatchProps {
+  dispatch: Dispatch
 }
 
-class Top extends React.Component<{}, TopState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      images: []
-    }
-  }
-
+class Top extends React.Component<DispatchProps> {
   public render() {
-    return <SlideShow images={this.state.images}/>
+    return <SlideShow/>
   }
 
   public componentWillMount() {
-    cloudFunctions.listImagesByTag('top')
-      .then((images: Image[]) => {
-        this.setState({images: toViewableArray(images, 0)});
-      })
+    listingByTag("top")(this.props.dispatch);
   }
 }
 
-export default Top;
+export default connect()(Top);
