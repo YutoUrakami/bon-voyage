@@ -29,13 +29,13 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
           )}
         </div>
         <div className="slide-navigation-left">
-          <div className="navigation-icon">
-            <i className="fas fa-chevron-left" onClick={this.onClickLeft}/>
+          <div className="navigation-icon" onClick={this.onClickLeft}>
+            <i className="fas fa-chevron-left"/>
           </div>
         </div>
         <div className="slide-navigation-right">
-          <div className="navigation-icon">
-            <i className="fas fa-chevron-right" onClick={this.onClickRight}/>
+          <div className="navigation-icon" onClick={this.onClickRight}>
+            <i className="fas fa-chevron-right"/>
           </div>
         </div>
       </div>
