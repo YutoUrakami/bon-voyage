@@ -12,13 +12,13 @@ interface GridProps {
 class Grid extends React.Component<GridProps & RouteComponentProps> {
   public render() {
     return (
-      <div className="folder-tree-root">
-        <div className="folder-container">
+      <div className="grid_root">
+        <div className="grid_container">
           {this.props.images.map((img) => {
             return (
-              <div key={img.publicId} className="folder-item">
+              <div key={img.publicId} className="grid_item">
                 <img src={this.imgThumbnailUrl(img.src)}/>
-                <div className="folder-item-mask">
+                <div className="grid_item_mask">
                   <div className="caption">{img.caption}</div>
                 </div>
               </div>
