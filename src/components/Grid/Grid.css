@@ -25,6 +25,10 @@
   height: 19.7vw;
   margin: 0.1vw 0;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @media screen and (max-width: 768px) {

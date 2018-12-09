@@ -3,6 +3,10 @@ div.panel {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 div.panel img {
   width: auto;
