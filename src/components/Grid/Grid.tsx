@@ -39,7 +39,9 @@ class Grid extends React.Component<GridProps & RouteComponentProps> {
 export default withRouter(connect(
   (state: ImagesListState): GridProps => {
     return {
-      images: state.list,
+      images: state.list.sort((a, b) => {
+        return a.publicId < b.publicId ? 1 : -1
+      }),
     }
   }
 )(Grid));
