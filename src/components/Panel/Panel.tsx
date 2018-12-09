@@ -8,8 +8,14 @@ interface PanelProps {
 class Panel extends React.Component<PanelProps> {
   public render() {
     return (
-      <div className="panel"><img src={this.props.srcURL} /></div>
+      <div className="panel">
+        <img src={this.props.srcURL} onClick={this.onClickImg} />
+      </div>
     );
+  }
+  
+  private onClickImg = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
   }
 }
 export default Panel;

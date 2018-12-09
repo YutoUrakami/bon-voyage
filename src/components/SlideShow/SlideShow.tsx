@@ -42,20 +42,22 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
     )
   }
   
-  private onClickLeft = () => {
+  private onClickLeft = (event: React.MouseEvent<HTMLDivElement>) => {
     let nextIndex = this.props.index - 1;
     if (nextIndex < 0) {
       nextIndex = this.props.images.length - 1
     }
     this.props.dispatch(updateIndex(nextIndex));
+    event.stopPropagation();
   };
 
-  private onClickRight = () => {
+  private onClickRight = (event: React.MouseEvent<HTMLDivElement>) => {
     let nextIndex = this.props.index + 1;
     if (this.props.images.length <= nextIndex) {
       nextIndex = 0
     }
     this.props.dispatch(updateIndex(nextIndex));
+    event.stopPropagation();
   };
 }
 

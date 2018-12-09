@@ -6,6 +6,7 @@ html {
 
 body {
   font-family: "Advent Pro", sans-serif;
+  color: #cccccc;
   width: 100vw;
   height: 100vh;
   overflow: hidden;

@@ -3,11 +3,13 @@
 }
 .navbar-brand .navbar-item .main-brand {
   font-size: 1.5em;
+  color: #cccccc;
 }
 
 .navbar-brand .navbar-item.sub-brand {
   font-size: 1em;
   padding-left: 0px;
+  color: #cccccc;
 }
 
 .navbar-menu a.navbar-item {

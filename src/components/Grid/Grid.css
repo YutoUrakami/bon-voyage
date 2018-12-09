@@ -3,6 +3,7 @@
   justify-content: center;
   position: absolute;
   width: 100vw;
+  padding-bottom: 3.25rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -24,6 +25,7 @@
   width: 19.7vw;
   height: 19.7vw;
   margin: 0.1vw 0;
+  cursor: pointer;
   position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -78,4 +80,14 @@
 
 .grid_item:hover .grid_item_mask {
   opacity: 1;
+  color: #7f7f7f;
+}
+
+.slide_modal {
+  background-color: rgba(10,10,10,0.85);
+  display: none;
+  z-index: 40;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }

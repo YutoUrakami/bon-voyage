@@ -1,31 +1,42 @@
 import * as React from 'react';
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
+import {Dispatch} from "redux";
 import {Image} from '../../models/image'
+import {updateIndex} from "../../reducers/imagesListReducer";
 import {ImagesListState} from "../../store";
+import SlideShow from "../SlideShow/SlideShow";
 import './Grid.css'
 
 interface GridProps {
   images: Image[]
 }
+interface DispatchProps {
+  dispatch: Dispatch
+}
 
-class Grid extends React.Component<GridProps & RouteComponentProps> {
+class Grid extends React.Component<GridProps & DispatchProps & RouteComponentProps> {
   public render() {
     return (
-      <div className="grid_root">
-        <div className="grid_container">
-          {this.props.images.map((img) => {
-            return (
-              <div key={img.publicId} className="grid_item">
-                <img src={this.imgThumbnailUrl(img.src)}/>
-                <div className="grid_item_mask">
-                  <div className="caption">{img.caption}</div>
+      <React.Fragment>
+        <div className="grid_root">
+          <div className="grid_container">
+            {this.props.images.map((img, index) => {
+              return (
+                <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
+                  <img src={this.imgThumbnailUrl(img.src)}/>
+                  <div className="grid_item_mask">
+                    <div className="caption">{img.caption}</div>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-      </div>
+        <div className="slide_modal" id="slideModal" onClick={this.closeModal}>
+          <SlideShow/>
+        </div>
+      </React.Fragment>
     )
   }
 
@@ -34,6 +45,26 @@ class Grid extends React.Component<GridProps & RouteComponentProps> {
     const insertIndex = originalUrl.indexOf(searchStr) + searchStr.length;
     return [originalUrl.slice(0, insertIndex), `c_thumb,h_720,w_720/`, originalUrl.slice(insertIndex)].join('');
   };
+
+  private launchModal = (event: React.MouseEvent<HTMLDivElement>) => {
+    const gridItem = event.currentTarget.closest(".grid_item");
+    if (!gridItem) {
+      return;
+    }
+    const index = parseInt(gridItem.id, 10);
+    this.props.dispatch(updateIndex(index));
+    const slideModal = document.getElementById("slideModal");
+    if (slideModal) {
+      slideModal.style.display = "block";
+    }
+  };
+  
+  private closeModal = () => {
+    const slideModal = document.getElementById("slideModal");
+    if (slideModal) {
+      slideModal.style.display = "none";
+    }
+  }
 }
 
 export default withRouter(connect(
