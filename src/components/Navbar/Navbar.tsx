@@ -17,7 +17,7 @@ class Navbar extends React.Component<{}, NavbarState> {
 
   public render() {
     return (
-      <nav className="navbar is-transparent is-fixed-bottom" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-transparent is-fixed-bottom-desktop" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
             <p className="main-brand">bon voyage!</p>
