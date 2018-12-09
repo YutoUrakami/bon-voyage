@@ -2,8 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux'
 import {RouteComponentProps, withRouter } from 'react-router-dom'
 import {Dispatch} from "redux";
-import {listingByTag, updateIndex} from "../../reducers/imagesListReducer";
-import {parseIndex} from "../../utilities";
+import {listingByTag} from "../../reducers/imagesListReducer";
 import SlideShow from '../SlideShow/SlideShow';
 
 interface DispatchProps {
@@ -16,15 +15,7 @@ class Top extends React.Component<DispatchProps & RouteComponentProps> {
   }
 
   public componentWillMount() {
-    listingByTag(
-      "top",
-      parseIndex(this.props.location.hash)
-    )(this.props.dispatch);
-  }
-  
-  public componentWillReceiveProps(nextProps: Readonly<DispatchProps & RouteComponentProps>, nextContext: any): void {
-    const newIndex = parseIndex(this.props.location.hash);
-    this.props.dispatch(updateIndex(newIndex));
+    listingByTag("top", 0)(this.props.dispatch);
   }
 }
 

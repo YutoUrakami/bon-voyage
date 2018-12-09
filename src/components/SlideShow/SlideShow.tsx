@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
+import {Dispatch} from "redux";
 import {Image} from "../../models/image";
+import {updateIndex} from "../../reducers/imagesListReducer";
 import {ImagesListState} from "../../store";
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
@@ -11,7 +13,11 @@ interface SlideShowProps {
   index: number
 }
 
-class SlideShow extends React.Component<SlideShowProps & RouteComponentProps> {
+interface DispatchProps {
+  dispatch: Dispatch
+}
+
+class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteComponentProps> {
   public render() {
     return (
       <div className="slide-container">
@@ -41,7 +47,7 @@ class SlideShow extends React.Component<SlideShowProps & RouteComponentProps> {
     if (nextIndex < 0) {
       nextIndex = this.props.images.length - 1
     }
-    this.props.history.push(`#${nextIndex}`)
+    this.props.dispatch(updateIndex(nextIndex));
   };
 
   private onClickRight = () => {
@@ -49,7 +55,7 @@ class SlideShow extends React.Component<SlideShowProps & RouteComponentProps> {
     if (this.props.images.length <= nextIndex) {
       nextIndex = 0
     }
-    this.props.history.push(`#${nextIndex}`)
+    this.props.dispatch(updateIndex(nextIndex));
   };
 }
 
