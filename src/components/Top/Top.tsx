@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux'
-import { RouteComponentProps, withRouter } from 'react-router-dom'
+import {RouteComponentProps, withRouter } from 'react-router-dom'
 import {Dispatch} from "redux";
 import {listingByTag, updateIndex} from "../../reducers/imagesListReducer";
 import SlideShow from '../SlideShow/SlideShow';
@@ -26,6 +26,10 @@ class Top extends React.Component<DispatchProps & RouteComponentProps> {
     this.props.dispatch(updateIndex(newIndex));
   }
   
+  // public componentWillUnmount(): void {
+  //   this.props.dispatch(clearImages());
+  // }
+
   private parseIndex(hash: string): number {
     const match = hash.match(/^#([0-9]+)/);
     let index = 0;

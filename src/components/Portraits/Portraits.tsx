@@ -1,9 +1,20 @@
 import * as React from 'react';
-import List from '../List/List'
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {listingInFolder} from "../../reducers/imagesListReducer";
+import Grid from '../Grid/Grid'
 
-class Portraits extends React.Component {
+interface DispatchProps {
+  dispatch: Dispatch
+}
+
+class Portraits extends React.Component<DispatchProps> {
   public render() {
-    return <List folderName='portraits'/>
+    return <Grid/>
+  }
+  
+  public componentWillMount(): void {
+    listingInFolder("portraits")(this.props.dispatch)
   }
 }
-export default Portraits;
+export default connect()(Portraits);

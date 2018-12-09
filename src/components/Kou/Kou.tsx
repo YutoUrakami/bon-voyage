@@ -1,9 +1,9 @@
 import * as React from 'react';
-import List from '../List/List'
+import Grid from '../Grid/Grid'
 
 class Kou extends React.Component {
   public render() {
-    return <List folderName='kou'/>
+    return <Grid/>
   }
 }
 export default Kou;

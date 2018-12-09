@@ -1,29 +1,20 @@
 import * as React from 'react';
+import {connect} from "react-redux";
+import {RouteComponentProps, withRouter} from "react-router";
 import {Image} from '../../models/image'
-import * as cloudFunctions from '../../services/cloudFunctions';
-import './/List.css'
+import {ImagesListState} from "../../store";
+import './Grid.css'
 
-interface ListProps {
-  folderName: string
-}
-
-interface ListState {
+interface GridProps {
   images: Image[]
 }
 
-class List extends React.Component<ListProps, ListState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      images: []
-    }
-  }
-
+class Grid extends React.Component<GridProps & RouteComponentProps> {
   public render() {
     return (
       <div className="folder-tree-root">
         <div className="folder-container">
-          {this.state.images.map((img) => {
+          {this.props.images.map((img) => {
             return (
               <div key={img.publicId} className="folder-item">
                 <img src={this.imgThumbnailUrl(img.src)}/>
@@ -38,17 +29,6 @@ class List extends React.Component<ListProps, ListState> {
     )
   }
 
-  public componentWillMount() {
-    cloudFunctions.listImagesInFolder(this.props.folderName)
-      .then((data) => {
-        this.setState({
-          images: data.sort((a, b) => {
-            return a.publicId < b.publicId ? 1 : -1
-          })
-        })
-      })
-  }
-
   private imgThumbnailUrl = (originalUrl: string): string => {
     const searchStr = '/image/upload/';
     const insertIndex = originalUrl.indexOf(searchStr) + searchStr.length;
@@ -56,4 +36,10 @@ class List extends React.Component<ListProps, ListState> {
   };
 }
 
-export default List;
+export default withRouter(connect(
+  (state: ImagesListState): GridProps => {
+    return {
+      images: state.list,
+    }
+  }
+)(Grid));

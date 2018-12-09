@@ -49,6 +49,19 @@ export const listingByTag = (tag: string, index: number = 0) => {
   };
 };
 
+export const listingInFolder = (folderName: string) => {
+  return (dispatch: Dispatch) => {
+    dispatch(listing(true));
+    cf.listImagesInFolder(folderName)
+      .then((images: Image[]) => {
+        dispatch(listedImages(images, 0))
+      })
+      .catch((err: Error) => {
+        dispatch(failedListing(err));
+      });
+  };
+};
+
 export const imagesListReducer: Reducer<ImagesListState, ListImagesAction> = (
   state = {
     error: undefined,
@@ -60,13 +73,13 @@ export const imagesListReducer: Reducer<ImagesListState, ListImagesAction> = (
 ) => {
   switch (action.type) {
     case LISTING:
-      return Object.assign({}, state, {isLoading: action.loading});
+      return Object.assign({}, state, {isLoading: action.loading, list: []});
     case LISTED_IMAGES:
       return Object.assign({}, state, {index: action.index, isLoading: false, list: action.images});
     case FAILED_LISTING:
       return Object.assign({}, state, {error: action.error, isLoading: false});
     case UPDATE_INDEX:
-      return Object.assign({}, state, {index: action.index});
+      return Object.assign({}, state, {index: action.index, isLoading: false});
   }
   return state;
 };
