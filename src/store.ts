@@ -5,8 +5,9 @@ import {imagesListReducer} from "./reducers/imagesListReducer";
 
 export interface ImagesListState {
   error?: Error,
+  index: number,
   isLoading: boolean,
-  list: Image[]
+  list: Image[],
 }
 
 export const generateStore = () => {

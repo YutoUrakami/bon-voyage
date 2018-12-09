@@ -6,11 +6,13 @@ import {ImagesListState} from "../store";
 const LISTING = "LISTING";
 const LISTED_IMAGES = "LISTED_IMAGES";
 const FAILED_LISTING = "FAILED_LISTING";
+const UPDATE_INDEX = "UPDATE_INDEX";
 
 export type ListImagesAction = (
   | ReturnType<typeof listing>
   | ReturnType<typeof listedImages>
   | ReturnType<typeof failedListing>
+  | ReturnType<typeof updateIndex>
   )
 
 export const listing = (isLoading: boolean) => ({
@@ -18,8 +20,9 @@ export const listing = (isLoading: boolean) => ({
   type: LISTING as typeof LISTING
 });
 
-export const listedImages = (list: Image[]) => ({
+export const listedImages = (list: Image[], i: number) => ({
   images: list,
+  index: i,
   type: LISTED_IMAGES as typeof LISTED_IMAGES
 });
 
@@ -28,12 +31,17 @@ export const failedListing = (err: Error) => ({
   type: FAILED_LISTING as typeof FAILED_LISTING
 });
 
-export const listingByTag = (tag: string) => {
+export const updateIndex = (newindex: number) => ({
+  index: newindex,
+  type: UPDATE_INDEX as typeof UPDATE_INDEX
+});
+
+export const listingByTag = (tag: string, index: number = 0) => {
   return (dispatch: Dispatch) => {
     dispatch(listing(true));
     cf.listImagesByTag(tag)
       .then((images: Image[]) => {
-        dispatch(listedImages(images))
+        dispatch(listedImages(images, index))
       })
       .catch((err: Error) => {
         dispatch(failedListing(err));
@@ -44,6 +52,7 @@ export const listingByTag = (tag: string) => {
 export const imagesListReducer: Reducer<ImagesListState, ListImagesAction> = (
   state = {
     error: undefined,
+    index: 0,
     isLoading: true,
     list: [],
   },
@@ -53,9 +62,11 @@ export const imagesListReducer: Reducer<ImagesListState, ListImagesAction> = (
     case LISTING:
       return Object.assign({}, state, {isLoading: action.loading});
     case LISTED_IMAGES:
-      return Object.assign({}, state, {isLoading: false, list: action.images});
+      return Object.assign({}, state, {index: action.index, isLoading: false, list: action.images});
     case FAILED_LISTING:
-      return Object.assign({}, state, {error: action.error, isLoading: false})
+      return Object.assign({}, state, {error: action.error, isLoading: false});
+    case UPDATE_INDEX:
+      return Object.assign({}, state, {index: action.index});
   }
   return state;
 };
