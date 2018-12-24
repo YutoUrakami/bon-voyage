@@ -1,16 +1,9 @@
 .grid_root {
   display: flex;
   justify-content: center;
-  position: absolute;
   width: 100vw;
+  height: auto;
   padding-bottom: 3.25rem;
-}
-
-@media screen and (min-width: 1024px) {
-  .grid_root {
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
 }
 
 .grid_container {
@@ -22,8 +15,8 @@
 }
 
 .grid_item {
-  width: 19.7vw;
-  height: 19.7vw;
+  width: 19.8vw;
+  height: 19.8vw;
   margin: 0.1vw 0;
   cursor: pointer;
   position: relative;
@@ -41,19 +34,11 @@
   }
 }
 
-@media screen and (max-width: 1023px) and (min-width: 769px) {
+@media screen and (max-width: 1920px) and (min-width: 769px) {
   .grid_item {
     width: 24.8vw;
     height: 24.8vw;
     margin: 0.14vw 0;
-  }
-}
-
-@media screen and (max-width: 1920px) and (min-width: 1024px) {
-  .grid_item {
-    width: 24.6vw;
-    height: 24.6vw;
-    margin: 0.12vw 0;
   }
 }
 
@@ -84,10 +69,10 @@
 }
 
 .slide_modal {
-  background-color: rgba(10,10,10,0.85);
+  background-color: rgba(10, 10, 10, 0.85);
   display: none;
   z-index: 40;
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }

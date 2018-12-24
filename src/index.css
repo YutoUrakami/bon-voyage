@@ -1,9 +1,9 @@
 @import '../node_modules/bulma/css/bulma.css';
 
 body {
-  font-family: "Advent Pro", sans-serif;
-  color: #cccccc;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("assets/images/background.jpg");
+  -ms-overflow-style:none;
+  overflow: -moz-scrollbars-none;
+}
+body::-webkit-scrollbar{
+  display:none;
 }
