@@ -7,6 +7,7 @@ div.panel {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  position: absolute;
 }
 div.panel img {
   width: auto;

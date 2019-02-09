@@ -7,6 +7,7 @@ import {updateIndex} from "../../reducers/imagesListReducer";
 import {ImagesListState} from "../../store";
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
+import {CSSTransition} from 'react-transition-group'
 
 interface SlideShowProps {
   images: Image[],
@@ -22,10 +23,16 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
     return (
       <div className="slide-container">
         <div className="slide-box">
-          {this.props.images.filter((img, index) =>
-            index === this.props.index
-          ).map((img) =>
-            <Panel srcURL={img.src} key={img.publicId}/>
+          {this.props.images.map((img, index) =>
+            <CSSTransition
+              classNames="fade"
+              in={index === this.props.index}
+              appear={true}
+              mountOnEnter={true}
+              timeout={750}
+              key={img.publicId}>
+              <Panel srcURL={img.src} key={img.publicId}/>
+            </CSSTransition>
           )}
         </div>
         <div className="slide-navigation-left">
@@ -41,7 +48,7 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
       </div>
     )
   }
-  
+
   private onClickLeft = (event: React.MouseEvent<HTMLDivElement>) => {
     let nextIndex = this.props.index - 1;
     if (nextIndex < 0) {

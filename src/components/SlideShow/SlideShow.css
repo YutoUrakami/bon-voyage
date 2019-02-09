@@ -36,3 +36,27 @@
   -ms-user-select: none;
   user-select: none;
 }
+.fade-appear {
+  opacity: 0.0;
+}
+.fade-appear-active {
+  opacity: 1.0;
+  transition: all 500ms;
+}
+.fade-enter {
+  opacity: 0.0;
+}
+.fade-enter-active {
+  opacity: 1.0;
+  transition: all 500ms;
+}
+.fade-exit {
+  opacity: 1.0;
+}
+.fade-exit-active {
+  opacity: 0.0;
+  transition: all 500ms;
+}
+.fade-exit-done {
+  display: none !important;
+}
