@@ -1,11 +1,9 @@
 import * as React from 'react';
 import {Route, Switch} from "react-router";
-import Kou from '../Kou/Kou'
 import Navbar from '../Navbar/Navbar';
-import Portraits from '../Portraits/Portraits';
 import Top from '../Top/Top';
 import './App.css';
-import Yokohama from '../Yokohama/Yokohama'
+import GripWrapper from '../GridWrapper/GripWrapper'
 
 class App extends React.Component {
   public render() {
@@ -14,12 +12,22 @@ class App extends React.Component {
         <Navbar/>
         <Switch>
           <Route exact={true} path="/" component={Top} />
-          <Route path="/kou" component={Kou}/>
-          <Route path="/portraits" component={Portraits}/>
-          <Route path="/yokohama" component={Yokohama}/>
+          <Route path="/kou" render={this.kou}/>
+          <Route path="/portraits" render={this.portraits}/>
+          <Route path="/yokohama" render={this.yokohama}/>
         </Switch>
       </div>
     );
+  }
+
+  private kou() {
+    return <GripWrapper folderName="kou"/>
+  }
+  private portraits() {
+    return <GripWrapper folderName="portraits"/>
+  }
+  private yokohama() {
+    return <GripWrapper folderName="yokohama"/>
   }
 }
 
