@@ -16,6 +16,7 @@
   font-size: 1.2em;
   margin: 0 10px 0;
   text-decoration: none;
+  color: inherit;
 }
 .navbar-menu a.navbar-item:hover {
   text-decoration: none;

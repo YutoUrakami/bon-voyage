@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import Portraits from '../Portraits/Portraits';
 import Top from '../Top/Top';
 import './App.css';
+import Yokohama from '../Yokohama/Yokohama'
 
 class App extends React.Component {
   public render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
           <Route exact={true} path="/" component={Top} />
           <Route path="/kou" component={Kou}/>
           <Route path="/portraits" component={Portraits}/>
+          <Route path="/yokohama" component={Yokohama}/>
         </Switch>
       </div>
     );
