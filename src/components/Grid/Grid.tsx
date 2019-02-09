@@ -7,39 +7,48 @@ import {updateIndex} from "../../reducers/imagesListReducer";
 import {ImagesListState} from "../../store";
 import SlideShow from "../SlideShow/SlideShow";
 import './Grid.css'
+import Loading from "../Loading/Loading";
 
 interface GridProps {
-  images: Image[]
+  images: Image[],
+  isLoading: boolean
 }
+
 interface DispatchProps {
   dispatch: Dispatch
 }
 
 class Grid extends React.Component<GridProps & DispatchProps & RouteComponentProps> {
   public render() {
-    return (
-      <React.Fragment>
-        <div className="grid_root">
-          <div className="grid_container">
-            {this.props.images.map((img, index) => {
-              return (
-                <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
-                  <img src={this.imgThumbnailUrl(img.src)}/>
-                  <div className="grid_item_mask">
-                    <div className="caption">{img.caption}</div>
+    if (this.props.isLoading) {
+      return (
+        <Loading/>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <div className="grid_root">
+            <div className="grid_container">
+              {this.props.images.map((img, index) => {
+                return (
+                  <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
+                    <img src={this.imgThumbnailUrl(img.src)}/>
+                    <div className="grid_item_mask">
+                      <div className="caption">{img.caption}</div>
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
-        </div>
-        <div className="modal_window" id="slideModal" onClick={this.closeModal}>
-          <div className="modal_content">
-            <SlideShow/>
+          <div className="modal_window" id="slideModal" onClick={this.closeModal}>
+            <div className="modal_content">
+              <SlideShow/>
+            </div>
           </div>
-        </div>
-      </React.Fragment>
-    )
+        </React.Fragment>
+      )
+    }
   }
 
   private imgThumbnailUrl = (originalUrl: string): string => {
@@ -60,7 +69,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
       slideModal.style.display = "block";
     }
   };
-  
+
   private closeModal = () => {
     const slideModal = document.getElementById("slideModal");
     if (slideModal) {
@@ -75,6 +84,7 @@ export default withRouter(connect(
       images: state.list.sort((a, b) => {
         return a.publicId < b.publicId ? 1 : -1
       }),
+      isLoading: state.isLoading
     }
   }
 )(Grid));
