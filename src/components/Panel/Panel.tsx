@@ -2,14 +2,15 @@ import * as React from 'react';
 import './Panel.css'
 
 interface PanelProps {
-  srcURL: string
+  srcURL: string,
+  caption: string
 }
 
 class Panel extends React.Component<PanelProps> {
   public render() {
     return (
       <div className="panel">
-        <img src={this.props.srcURL} onClick={this.onClickImg} />
+        <img src={this.props.srcURL} alt={this.props.caption} onClick={this.onClickImg} />
       </div>
     );
   }

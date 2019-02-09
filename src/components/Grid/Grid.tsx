@@ -32,7 +32,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
               {this.props.images.map((img, index) => {
                 return (
                   <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
-                    <img src={this.imgThumbnailUrl(img.src)}/>
+                    <img src={this.imgThumbnailUrl(img.src)} alt={img.caption}/>
                     <div className="grid_item_mask">
                       <div className="caption">{img.caption}</div>
                     </div>
