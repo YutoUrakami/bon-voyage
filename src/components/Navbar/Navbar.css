@@ -1,5 +1,5 @@
-.navbar {
-  background-image: url("../../assets/images/background.jpg");
+.App .navbar {
+  background-color: rgba(10, 10, 10, 0.5);
 }
 .navbar-brand .navbar-item .main-brand {
   font-size: 1.5em;
@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 1087px) {
   .navbar-menu.is-active {
-    background-color: rgba(10, 10, 10, 0.85);
+    background-color: rgba(10, 10, 10, 0.5);
     position: absolute;
     width: 100vw;
     bottom: 3.25rem;

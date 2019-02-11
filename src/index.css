@@ -3,6 +3,7 @@
 body {
   -ms-overflow-style:none;
   overflow: -moz-scrollbars-none;
+  background-image: url("./assets/images/background.jpg");
 }
 body::-webkit-scrollbar{
   display:none;
