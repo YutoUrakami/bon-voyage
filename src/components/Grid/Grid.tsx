@@ -45,6 +45,9 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
             <div className="modal_content">
               <SlideShow/>
             </div>
+            <div className="modal-close-button" onClick={this.closeModal}>
+              <i className="material-icons">close</i>
+            </div>
           </div>
         </React.Fragment>
       )

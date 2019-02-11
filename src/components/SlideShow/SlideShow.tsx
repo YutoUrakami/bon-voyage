@@ -44,12 +44,12 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
           </div>
           <div className="slide-navigation-left">
             <div className="navigation-icon" onClick={this.onClickLeft}>
-              <i className="fas fa-chevron-left"/>
+              <i className="material-icons">chevron_left</i>
             </div>
           </div>
           <div className="slide-navigation-right">
             <div className="navigation-icon" onClick={this.onClickRight}>
-              <i className="fas fa-chevron-right"/>
+              <i className="material-icons">chevron_right</i>
             </div>
           </div>
         </div>

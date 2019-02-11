@@ -28,9 +28,11 @@
   justify-content: center;
 }
 .navigation-icon {
-  padding: 1vw;
+  width: 25px;
+  height: 25px;
+  margin: 1vw;
   cursor: pointer;
-  color: #aaaaaa;
+  color: rgba(204,204,204,0.5);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
