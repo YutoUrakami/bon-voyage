@@ -88,7 +88,7 @@
 }
 
 .modal-close-button {
-  color: #cccccc;
+  color: rgba(204,204,204,0.5);
   cursor: pointer;
   position: absolute;
   top: 5px;
