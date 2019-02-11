@@ -21,6 +21,7 @@
   margin: 0 10px 0;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 .navbar-menu a.navbar-item:hover {
   text-decoration: none;

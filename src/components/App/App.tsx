@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import Top from '../Top/Top';
 import './App.css';
 import GripWrapper from '../GridWrapper/GripWrapper'
+import About from '../About/About'
 
 class App extends React.Component {
   public render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
           <Route path="/kou" render={this.kou}/>
           <Route path="/portraits" render={this.portraits}/>
           <Route path="/yokohama" render={this.yokohama}/>
+          <Route path="/about" component={About} />
         </Switch>
       </div>
     );

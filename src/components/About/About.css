@@ -1,0 +1,42 @@
+.profile {
+}
+
+.profile-name {
+  text-align: center;
+  font-size: 2em;
+}
+
+.profile-image {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.profile-image img {
+  padding: 5px;
+  background-color: white;
+}
+
+.social {
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 10px;
+}
+
+.social a .social-icon {
+  padding: 0 10px;
+  text-decoration: none;
+  color: #cccccc;
+}
+.social a .social-icon:hover {
+  text-decoration: none;
+  color: #cccccc;
+}
+.social a .social-icon:visited {
+  text-decoration: none;
+  color: #cccccc;
+}
+.social a .social-icon:active {
+  text-decoration: none;
+  color: #cccccc;
+}

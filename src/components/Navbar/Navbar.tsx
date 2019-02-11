@@ -47,6 +47,7 @@ class Navbar extends React.Component<{}, NavbarState> {
 
   public componentWillMount() {
     cloudFunctions.listFolders().then((folderNames: string[]) => {
+      folderNames.push("about");
       this.setState({folders: folderNames})
     });
   }
