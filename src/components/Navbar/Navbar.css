@@ -12,6 +12,10 @@
   color: #cccccc;
 }
 
+.navbar-brand .navbar-burger.burger {
+  color: #cccccc;
+}
+
 .navbar-menu a.navbar-item {
   font-size: 1.2em;
   margin: 0 10px 0;
@@ -30,6 +34,35 @@
   color: inherit;
 }
 
-.navbar-menu .navbar-end {
-  margin-right: 50px;
+/*.navbar-menu .navbar-end {*/
+  /*margin-right: 50px;*/
+/*}*/
+
+@media screen and (max-width: 1087px) {
+  .navbar-menu.is-active {
+    background-color: rgba(10, 10, 10, 0.85);
+    position: absolute;
+    width: 100vw;
+    bottom: 3.25rem;
+    right: 0px;
+    text-align: right;
+  }
+  .navbar-menu.is-active .navbar-end {
+    margin-right: 0px;
+  }
+  .navbar-menu.is-active a.navbar-item:hover {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+  }
+  .navbar-menu.is-active a.navbar-item:visited {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+  }
+  .navbar-menu.is-active a.navbar-item:active {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+  }
 }
