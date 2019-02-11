@@ -9,15 +9,15 @@
 .grid_container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
 }
 
 .grid_item {
-  width: 19.8vw;
-  height: 19.8vw;
-  margin: 0.1vw 0;
+  width: 19.9vw;
+  height: 19.9vw;
+  margin: 0.05vw;
   cursor: pointer;
   position: relative;
   -webkit-user-select: none;
@@ -28,9 +28,9 @@
 
 @media screen and (max-width: 768px) {
   .grid_item {
-    width: 49.8vw;
-    height: 49.8vw;
-    margin: 0.15vw 0;
+    width: 49.7vw;
+    height: 49.7vw;
+    margin: 0.15vw;
   }
 }
 
@@ -38,7 +38,7 @@
   .grid_item {
     width: 24.8vw;
     height: 24.8vw;
-    margin: 0.14vw 0;
+    margin: 0.1vw;
   }
 }
 
