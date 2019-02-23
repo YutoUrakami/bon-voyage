@@ -4,7 +4,7 @@ import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from '../../models/image'
 import {updateIndex} from "../../reducers/imagesListReducer";
-import {ImagesListState} from "../../store";
+import {FolderListState, ImagesListState} from "../../store";
 import SlideShow from "../SlideShow/SlideShow";
 import './Grid.css'
 import Loading from "../Loading/Loading";
@@ -83,12 +83,12 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
 }
 
 export default withRouter(connect(
-  (state: ImagesListState): GridProps => {
+  (state: {folders: FolderListState, images: ImagesListState}): GridProps => {
     return {
-      images: state.list.sort((a, b) => {
+      images: state.images.list.sort((a, b) => {
         return a.publicId < b.publicId ? 1 : -1
       }),
-      isLoading: state.isLoading
+      isLoading: state.images.isLoading
     }
   }
 )(Grid));

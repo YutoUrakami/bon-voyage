@@ -1,7 +1,7 @@
 import {applyMiddleware, createStore} from "redux";
 import thunk from 'redux-thunk';
 import {Image} from "./models/image";
-import {imagesListReducer} from "./reducers/imagesListReducer";
+import rootReducer from "./reducers";
 
 export interface ImagesListState {
   error?: Error,
@@ -10,6 +10,12 @@ export interface ImagesListState {
   list: Image[],
 }
 
+export interface FolderListState {
+  error?: Error,
+  isLoading: boolean,
+  list: string[],
+}
+
 export const generateStore = () => {
-  return createStore(imagesListReducer, applyMiddleware(thunk))
+  return createStore(rootReducer, applyMiddleware(thunk))
 };

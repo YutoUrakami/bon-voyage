@@ -35,7 +35,7 @@ export const listFolders = async () => {
   const res = await cloudFunctions.get("/list_cloudinary_folders");
   const folders: Array<{ [key: string]: any }> = res.data.folders;
   return folders.map((folder) => {
-    return folder.name;
+    return folder.name
   });
 };
 

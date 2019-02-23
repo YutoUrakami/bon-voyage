@@ -4,11 +4,11 @@ import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from "../../models/image";
 import {updateIndex} from "../../reducers/imagesListReducer";
-import {ImagesListState} from "../../store";
 import Panel from '../Panel/Panel';
 import './SlideShow.css'
 import {CSSTransition} from 'react-transition-group'
 import Loading from '../Loading/Loading'
+import {FolderListState, ImagesListState} from "../../store";
 
 interface SlideShowProps {
   images: Image[],
@@ -77,11 +77,11 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
 }
 
 export default withRouter(connect(
-  (state: ImagesListState): SlideShowProps => {
+  (state: {folders: FolderListState, images: ImagesListState}): SlideShowProps => {
     return {
-      images: state.list,
-      index: state.index,
-      isLoading: state.isLoading
+      images: state.images.list,
+      index: state.images.index,
+      isLoading: state.images.isLoading
     }
   }
 )(SlideShow));

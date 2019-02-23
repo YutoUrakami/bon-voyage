@@ -5,8 +5,15 @@ import Top from '../Top/Top';
 import './App.css';
 import GripWrapper from '../GridWrapper/GripWrapper'
 import About from '../About/About'
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {listingFolders} from "../../reducers/folderListReducer";
 
-class App extends React.Component {
+interface DispatchProps {
+  dispatch: Dispatch
+}
+
+class App extends React.Component<DispatchProps> {
   public render() {
     return (
       <div className="App">
@@ -22,6 +29,10 @@ class App extends React.Component {
     );
   }
 
+  public componentWillMount(): void {
+    listingFolders()(this.props.dispatch);
+  }
+
   private kou() {
     return <GripWrapper folderName="kou"/>
   }
@@ -33,4 +44,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect()(App);
