@@ -74,6 +74,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
   };
 
   private closeModal = () => {
+    this.props.dispatch(updateIndex(-1));
     const slideModal = document.getElementById("slideModal");
     if (slideModal) {
       slideModal.style.display = "none";
