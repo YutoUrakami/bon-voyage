@@ -7,7 +7,7 @@ import GripWrapper from '../GridWrapper/GripWrapper'
 import About from '../About/About'
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {listingFolders} from "../../reducers/folderListReducer";
+// import {listingFolders} from "../../reducers/folderListReducer";
 
 interface DispatchProps {
   dispatch: Dispatch
@@ -29,9 +29,10 @@ class App extends React.Component<DispatchProps> {
     );
   }
 
-  public componentWillMount(): void {
-    listingFolders()(this.props.dispatch);
-  }
+  // TODO: 動的ルーティングができるようになったら使う
+  // public componentWillMount(): void {
+  //   listingFolders()(this.props.dispatch);
+  // }
 
   private kou() {
     return <GripWrapper folderName="kou"/>
