@@ -50,7 +50,7 @@ class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponen
             {/*{this.props.folderNames.map((folder) => {*/}
               {/*return <Link to={`/${folder}`} className="navbar-item" key={folder} onClick={this.clearBurgerActive}>{folder}</Link>*/}
             {/*})}*/}
-            <Link to="/kou" className="navbar-item" onClick={this.clearBurgerActive}>kou</Link>
+            <Link to="/un_fils" className="navbar-item" onClick={this.clearBurgerActive}>un fils</Link>
             <Link to="/portraits" className="navbar-item" onClick={this.clearBurgerActive}>portraits</Link>
             <Link to="/yokohama" className="navbar-item" onClick={this.clearBurgerActive}>yokohama</Link>
             <Link to="/about" className="navbar-item" onClick={this.clearBurgerActive}>about</Link>

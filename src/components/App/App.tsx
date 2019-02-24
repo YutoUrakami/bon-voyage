@@ -20,7 +20,7 @@ class App extends React.Component<DispatchProps> {
         <Navbar/>
         <Switch>
           <Route exact={true} path="/" component={Top} />
-          <Route path="/kou" render={this.kou}/>
+          <Route path="/un_fils" render={this.un_fils}/>
           <Route path="/portraits" render={this.portraits}/>
           <Route path="/yokohama" render={this.yokohama}/>
           <Route path="/about" component={About} />
@@ -34,8 +34,8 @@ class App extends React.Component<DispatchProps> {
   //   listingFolders()(this.props.dispatch);
   // }
 
-  private kou() {
-    return <GripWrapper folderName="kou"/>
+  private un_fils() {
+    return <GripWrapper folderName="un_fils"/>
   }
   private portraits() {
     return <GripWrapper folderName="portraits"/>
