@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
+    "hammerjs": "^2.0.8",
     "node-sass-chokidar": "^1.3.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -30,6 +31,7 @@
     "@types/axios": "^0.14.0",
     "@types/debug": "^0.0.31",
     "@types/dotenv": "^6.1.0",
+    "@types/hammerjs": "^2.0.36",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.10",
     "@types/react": "^16.7.6",
