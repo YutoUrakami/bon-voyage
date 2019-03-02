@@ -5,6 +5,7 @@ import Top from '../Top/Top';
 import './App.css';
 import GripWrapper from '../GridWrapper/GripWrapper'
 import About from '../About/About'
+import NotFound from '../NotFound/NotFound'
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 // import {listingFolders} from "../../reducers/folderListReducer";
@@ -24,6 +25,7 @@ class App extends React.Component<DispatchProps> {
           <Route path="/portraits" render={this.portraits}/>
           <Route path="/yokohama" render={this.yokohama}/>
           <Route path="/about" component={About} />
+          <Route component={NotFound}/>
         </Switch>
       </div>
     );
