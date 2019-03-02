@@ -8,6 +8,7 @@ import {FolderListState, ImagesListState} from "../../store";
 import SlideShow from "../SlideShow/SlideShow";
 import './Grid.css'
 import Loading from "../Loading/Loading";
+import {CSSTransition} from "react-transition-group";
 
 interface GridProps {
   images: Image[],
@@ -31,12 +32,20 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
             <div className="grid_container">
               {this.props.images.map((img, index) => {
                 return (
-                  <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
-                    <img src={this.imgThumbnailUrl(img.src)} alt={img.caption}/>
-                    <div className="grid_item_mask">
-                      <div className="caption">{img.caption}</div>
+                  <CSSTransition
+                    classNames="fade"
+                    in={true}
+                    appear={true}
+                    mountOnEnter={true}
+                    timeout={750}
+                    key={img.publicId}>
+                    <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
+                      <img src={this.imgThumbnailUrl(img.src)} alt={img.caption}/>
+                      <div className="grid_item_mask">
+                        <div className="caption">{img.caption}</div>
+                      </div>
                     </div>
-                  </div>
+                  </CSSTransition>
                 )
               })}
             </div>
@@ -83,7 +92,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
 }
 
 export default withRouter(connect(
-  (state: {folders: FolderListState, images: ImagesListState}): GridProps => {
+  (state: { folders: FolderListState, images: ImagesListState }): GridProps => {
     return {
       images: state.images.list.sort((a, b) => {
         return a.publicId < b.publicId ? 1 : -1
