@@ -4,27 +4,22 @@ import {RouteComponentProps, withRouter} from 'react-router'
 import './Navbar.css';
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
-import {FolderListState, ImagesListState} from "../../store";
-
-interface NavbarState {
-  burgerActive: boolean,
-}
+import {FolderListState, ImagesListState, BurgerMenuState} from "../../store";
+import {changeBurgerMenuActivity} from "../../reducers/burgerMenuReducer";
 
 interface NavbarProps {
+  burgerActive: boolean,
   folderNames: string[],
-  isLoading: boolean
+  isLoading: boolean,
 }
 
 interface DispatchProps {
   dispatch: Dispatch
 }
 
-class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponentProps, NavbarState> {
+class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponentProps> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      burgerActive: false
-    };
     this.toggleBurgerActive = this.toggleBurgerActive.bind(this);
     this.clearBurgerActive = this.clearBurgerActive.bind(this);
   }
@@ -61,28 +56,29 @@ class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponen
   }
   
   private burgerClassName() {
-    return `navbar-burger burger ${this.state.burgerActive ? "is-active" : ""}`
+    return `navbar-burger burger ${this.props.burgerActive ? "is-active" : ""}`
   }
 
   private menuClassName() {
-    return `navbar-menu ${this.state.burgerActive ? "is-active" : ""}`
+    return `navbar-menu ${this.props.burgerActive ? "is-active" : ""}`
   }
 
   private toggleBurgerActive() {
-    const next = !this.state.burgerActive;
-    this.setState({burgerActive: next});
+    const next = !this.props.burgerActive;
+    changeBurgerMenuActivity(next)(this.props.dispatch)
   }
 
   private clearBurgerActive() {
-    this.setState({burgerActive: false});
+    changeBurgerMenuActivity(false)(this.props.dispatch)
   }
 }
 
-export default withRouter(connect<{}, {}, NavbarProps & RouteComponentProps>(
-  (state: { folders: FolderListState, images: ImagesListState }): NavbarProps => {
+export default withRouter(connect(
+  (state: { folders: FolderListState, images: ImagesListState, burgerMenu: BurgerMenuState }): NavbarProps => {
     return {
       folderNames: state.folders.list,
-      isLoading: state.folders.isLoading
+      isLoading: state.folders.isLoading,
+      burgerActive: state.burgerMenu.isActive
     }
   }
 )(Navbar));

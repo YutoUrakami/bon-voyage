@@ -8,24 +8,22 @@ import Panel from '../Panel/Panel';
 import './SlideShow.css'
 import {CSSTransition} from 'react-transition-group'
 import Loading from '../Loading/Loading'
-import {FolderListState, ImagesListState} from "../../store";
+import {FolderListState, ImagesListState, BurgerMenuState, SwipeHandlerState} from "../../store";
 import * as Hammer from 'hammerjs'
+import {registerSwipeHandler} from "../../reducers/swipeHandlerReducer";
 
 interface SlideShowProps {
   images: Image[],
   index: number,
-  isLoading: boolean
+  isLoading: boolean,
+  swipeHandlerRegistered: boolean
 }
 
 interface DispatchProps {
   dispatch: Dispatch
 }
 
-interface SwipeHandlerState {
-  swipeHandlerRegistered: boolean
-}
-
-class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteComponentProps, SwipeHandlerState> {
+class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteComponentProps> {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,14 +69,14 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
 
   public componentDidMount(): void {
     if (this.registerSlideSwipeHandler()) {
-      this.setState({swipeHandlerRegistered: true});
+      registerSwipeHandler()(this.props.dispatch)
     }
   }
 
   public componentDidUpdate(): void {
-    if (!this.state.swipeHandlerRegistered) {
+    if (!this.props.swipeHandlerRegistered) {
       if (this.registerSlideSwipeHandler()) {
-        this.setState({swipeHandlerRegistered: true});
+        registerSwipeHandler()(this.props.dispatch)
       }
     }
   }
@@ -134,12 +132,18 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
   };
 }
 
-export default withRouter(connect<{}, {}, SlideShowProps & DispatchProps & RouteComponentProps>(
-  (state: { folders: FolderListState, images: ImagesListState }): SlideShowProps => {
+export default withRouter(connect(
+  (state: {
+    folders: FolderListState,
+    images: ImagesListState,
+    burger: BurgerMenuState,
+    swipeHandler: SwipeHandlerState
+  }): SlideShowProps => {
     return {
       images: state.images.list,
       index: state.images.index,
-      isLoading: state.images.isLoading
+      isLoading: state.images.isLoading,
+      swipeHandlerRegistered: state.swipeHandler.registered
     }
   }
 )(SlideShow));

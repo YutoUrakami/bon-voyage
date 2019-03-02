@@ -16,6 +16,14 @@ export interface FolderListState {
   list: string[],
 }
 
+export interface BurgerMenuState {
+  isActive: boolean
+}
+
+export interface SwipeHandlerState {
+  registered: boolean
+}
+
 export const generateStore = () => {
   return createStore(rootReducer, applyMiddleware(thunk))
 };
