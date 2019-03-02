@@ -17,6 +17,10 @@ class About extends React.Component {
             <i className="social-icon fab fa-twitter"/>
           </a>
         </div>
+        <div className="profile-text">
+          本職はプログラマーな週末フォトグラファー。<br/>
+          現在は息子の写真と、勤務先のある横浜のスナップ中心に撮影しています。
+        </div>
       </div>
     )
   }

@@ -40,3 +40,8 @@
   text-decoration: none;
   color: #cccccc;
 }
+
+.profile-text {
+  margin-top: 30px;
+  text-align: center;
+}
