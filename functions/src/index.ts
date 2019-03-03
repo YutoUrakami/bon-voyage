@@ -3,24 +3,29 @@ import {listFolderHandler} from "./list-folders";
 import {listImagesByTagHandler, listImagesInFolderHandler} from "./list-images";
 import CORS = require('cors');
 
-const cors = CORS();
+const cors = CORS({
+  origin: "https://photo.phoooutty.com"
+});
 
 const tokyoFunctions = functions.region('asia-northeast1');
 
 export const listFolders = tokyoFunctions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
-    await listFolderHandler(req, res)
+    const cloudinaryRes = await listFolderHandler();
+    res.status(cloudinaryRes.status).send(cloudinaryRes.data);
   });
 });
 
 export const listImagesByTag = tokyoFunctions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
-    await listImagesByTagHandler(req, res)
+    const cloudinaryRes = await listImagesByTagHandler(req.query.tag);
+    res.status(cloudinaryRes.status).send(cloudinaryRes.data);
   });
 });
 
 export const listImagesInFolder = tokyoFunctions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
-    await listImagesInFolderHandler(req, res)
+    const cloudinaryRes = await listImagesInFolderHandler(req.query.folder_name);
+    res.status(cloudinaryRes.status).send(cloudinaryRes.data);
   });
 });
