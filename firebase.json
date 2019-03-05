@@ -8,6 +8,18 @@
     ],
     "rewrites": [
       {
+        "source": "/cf-api/folders",
+        "function": "listFolders"
+      },
+      {
+        "source": "/cf-api/images/tag",
+        "function": "listImagesByTag"
+      },
+      {
+        "source": "/cf-api/images/folder",
+        "function": "listImagesInFolder"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
