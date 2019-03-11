@@ -23,7 +23,7 @@ jobs:
           paths:
             - ~/workspace/node_modules
             - ~/.cache/yarn/
-      - run: make deploy
+      - run: make deploy/ci
 workflows:
   version: 2
   build:
