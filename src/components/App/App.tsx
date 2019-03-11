@@ -19,14 +19,16 @@ class App extends React.Component<DispatchProps> {
     return (
       <div className="App">
         <Navbar/>
-        <Switch>
-          <Route exact={true} path="/" component={Top} />
-          <Route path="/un_fils" render={this.un_fils}/>
-          <Route path="/portraits" render={this.portraits}/>
-          <Route path="/yokohama" render={this.yokohama}/>
-          <Route path="/about" component={About} />
-          <Route component={NotFound}/>
-        </Switch>
+        <div className="main">
+          <Switch>
+            <Route exact={true} path="/" component={Top}/>
+            <Route path="/un_fils" render={this.un_fils}/>
+            <Route path="/portraits" render={this.portraits}/>
+            <Route path="/yokohama" render={this.yokohama}/>
+            <Route path="/about" component={About}/>
+            <Route component={NotFound}/>
+          </Switch>
+        </div>
       </div>
     );
   }
@@ -39,9 +41,11 @@ class App extends React.Component<DispatchProps> {
   private un_fils() {
     return <GripWrapper folderName="un_fils"/>
   }
+
   private portraits() {
     return <GripWrapper folderName="portraits"/>
   }
+
   private yokohama() {
     return <GripWrapper folderName="yokohama"/>
   }
