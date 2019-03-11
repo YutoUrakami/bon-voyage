@@ -17,6 +17,7 @@ jobs:
       - checkout
       - restore_cache:
           key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: npm install firebase-tools
       - run: yarn install
       - save_cache:
           key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
