@@ -11,5 +11,5 @@ deploy: build/prd
 	firebase deploy
 deploy/functions:
 	firebase deploy --only functions
-deploy/ci build/prd
+deploy/ci: build/prd
 	firebase deploy --token ${FIREBASE_TOKEN}
