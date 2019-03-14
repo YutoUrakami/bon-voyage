@@ -1,0 +1,19 @@
+.copyright {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: rgba(10, 10, 10, 0.85);
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  box-shadow: 0 0 5px #222;
+  -webkit-box-shadow: 0 0 5px #222;
+  -moz-box-shadow: 0 0 5px #222;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.copyright.show {
+  display: block;
+}

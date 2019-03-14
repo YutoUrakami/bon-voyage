@@ -6,6 +6,7 @@ import './App.css';
 import GripWrapper from '../GridWrapper/GripWrapper'
 import About from '../About/About'
 import NotFound from '../NotFound/NotFound'
+import Copyright from '../copyright/copyright'
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 // import {listingFolders} from "../../reducers/folderListReducer";
@@ -18,6 +19,7 @@ class App extends React.Component<DispatchProps> {
   public render() {
     return (
       <div className="App">
+        <Copyright/>
         <Navbar/>
         <div className="main">
           <Switch>
