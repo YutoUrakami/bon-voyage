@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Panel.css'
+import './panel.css'
 import * as copyright from "../../services/copyright";
 
 interface PanelProps {

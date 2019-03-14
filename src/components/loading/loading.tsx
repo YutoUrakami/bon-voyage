@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Loading.css'
+import './loading.css'
 import {CSSTransition} from "react-transition-group";
 
 class Loading extends React.Component {

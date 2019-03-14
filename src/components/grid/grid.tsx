@@ -5,9 +5,9 @@ import {Dispatch} from "redux";
 import {Image} from '../../models/image'
 import {updateIndex} from "../../reducers/imagesListReducer";
 import {FolderListState, ImagesListState} from "../../store";
-import SlideShow from "../SlideShow/SlideShow";
-import './Grid.css'
-import Loading from "../Loading/Loading";
+import SlideShow from "../slideShow/slideShow";
+import './grid.css'
+import Loading from "../loading/loading";
 import {CSSTransition} from "react-transition-group";
 
 interface GridProps {

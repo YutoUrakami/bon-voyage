@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Route, Switch} from "react-router";
-import Navbar from '../Navbar/Navbar';
-import Top from '../Top/Top';
-import './App.css';
-import GripWrapper from '../GridWrapper/GripWrapper'
-import About from '../About/About'
-import NotFound from '../NotFound/NotFound'
+import Navbar from '../navbar/navbar';
+import Top from '../top/top';
+import './app.css';
+import GripWrapper from '../gridWrapper/gripWrapper'
+import About from '../about/about'
+import NotFound from '../notFound/notFound'
 import Copyright from '../copyright/copyright'
 import {connect} from "react-redux";
 import {Dispatch} from "redux";

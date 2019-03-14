@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom'
 import {RouteComponentProps, withRouter} from 'react-router'
-import './Navbar.css';
+import './navbar.css';
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {FolderListState, ImagesListState, BurgerMenuState} from "../../store";

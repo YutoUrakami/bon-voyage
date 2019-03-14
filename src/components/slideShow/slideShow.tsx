@@ -4,10 +4,10 @@ import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from "../../models/image";
 import {updateIndex} from "../../reducers/imagesListReducer";
-import Panel from '../Panel/Panel';
-import './SlideShow.css'
+import Panel from '../panel/panel';
+import './slideShow.css'
 import {CSSTransition} from 'react-transition-group'
-import Loading from '../Loading/Loading'
+import Loading from '../loading/loading'
 import {FolderListState, ImagesListState, BurgerMenuState, SwipeHandlerState} from "../../store";
 import * as Hammer from 'hammerjs'
 import {registerSwipeHandler} from "../../reducers/swipeHandlerReducer";
