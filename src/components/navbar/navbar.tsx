@@ -9,8 +9,6 @@ import {changeBurgerMenuActivity} from "../../reducers/burgerMenuReducer";
 
 interface NavbarProps {
   burgerActive: boolean,
-  folderNames: string[],
-  isLoading: boolean,
 }
 
 interface DispatchProps {
@@ -41,10 +39,6 @@ class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponen
         </div>
         <div className={this.menuClassName()}>
           <div className="navbar-end">
-            {/* TODO: ルーティングが動的に行えないのでメニューを動的に作る意味がない */}
-            {/*{this.props.folderNames.map((folder) => {*/}
-              {/*return <Link to={`/${folder}`} className="navbar-item" key={folder} onClick={this.clearBurgerActive}>{folder}</Link>*/}
-            {/*})}*/}
             <Link to="/un_fils" className="navbar-item" onClick={this.clearBurgerActive}>un fils</Link>
             <Link to="/portraits" className="navbar-item" onClick={this.clearBurgerActive}>portraits</Link>
             <Link to="/yokohama" className="navbar-item" onClick={this.clearBurgerActive}>yokohama</Link>
@@ -76,8 +70,6 @@ class Navbar extends React.Component<NavbarProps & DispatchProps & RouteComponen
 export default withRouter(connect(
   (state: { folders: FolderListState, images: ImagesListState, burgerMenu: BurgerMenuState }): NavbarProps => {
     return {
-      folderNames: state.folders.list,
-      isLoading: state.folders.isLoading,
       burgerActive: state.burgerMenu.isActive
     }
   }
