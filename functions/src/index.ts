@@ -2,9 +2,16 @@ import * as functions from 'firebase-functions';
 import {listFolderHandler} from "./list-folders";
 import {listImagesByTagHandler, listImagesInFolderHandler} from "./list-images";
 import CORS = require('cors');
+import {SERVER_STAGE} from "./env";
 
+let originStr;
+if (SERVER_STAGE === "develop") {
+  originStr = "*"
+} else {
+  originStr = "https://photo.phoooutty.com"
+}
 const cors = CORS({
-  origin: "https://photo.phoooutty.com"
+  origin: originStr 
 });
 
 export const listFolders = functions.region("asia-northeast1").https.onRequest( (req, res) => {
