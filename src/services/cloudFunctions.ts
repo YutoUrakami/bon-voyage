@@ -3,7 +3,7 @@ import env = require('../env');
 import {Image} from '../models/image'
 
 const cloudFunctions = axios.default.create({
-  baseURL: env.bvEndpoint
+  baseURL: env.functionsEndpoint
 });
 
 const getCaption = (context?: { [key: string]: any }) => {
@@ -25,14 +25,14 @@ const toImagesArray = (resources: Array<{ [key: string]: any }>) => {
 
 export const listImagesByTag = async (tag: string) => {
   const res = await cloudFunctions.get(
-    "/cf-api/images/tag",
+    "/listImagesByTag",
     { params: { "tag": tag } }
     );
   return toImagesArray(res.data.resources);
 };
 
 export const listFolders = async () => {
-  const res = await cloudFunctions.get("/cf-api/folders");
+  const res = await cloudFunctions.get("/listFolders");
   const folders: Array<{ [key: string]: any }> = res.data.folders;
   return folders.map((folder) => {
     return folder.name
@@ -41,7 +41,7 @@ export const listFolders = async () => {
 
 export const listImagesInFolder = async (folderName: string) => {
   const res = await cloudFunctions.get(
-    "/cf-api/images/folder",
+    "/listImagesInFolder",
     {params: {"folder_name": folderName}}
     );
   return toImagesArray(res.data.resources);
