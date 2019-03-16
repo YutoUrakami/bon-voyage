@@ -62,6 +62,19 @@ export const listingInFolder = (folderName: string) => {
   };
 };
 
+export const topImages = () => {
+  return (dispatch: Dispatch) => {
+    const images: Image[] = [
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294452/un_fils/009.jpg", ""),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/010.jpg", ""),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/006.jpg", ""),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/003.jpg", ""),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1551005819/un_fils/001.jpg", "")
+    ];
+    dispatch(listedImages(images, 0))
+  }
+};
+
 export const imagesListReducer: Reducer<ImagesListState, ListImagesAction> = (
   state = {
     error: undefined,
