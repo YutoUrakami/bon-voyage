@@ -2,26 +2,33 @@ import * as functions from 'firebase-functions';
 import {listFolderHandler} from "./list-folders";
 import {listImagesByTagHandler, listImagesInFolderHandler} from "./list-images";
 import CORS = require('cors');
+import {SERVER_STAGE} from "./env";
 
+let originStr;
+if (SERVER_STAGE === "develop") {
+  originStr = "*"
+} else {
+  originStr = "https://photo.phoooutty.com"
+}
 const cors = CORS({
-  origin: "https://photo.phoooutty.com"
+  origin: originStr 
 });
 
-export const listFolders = functions.https.onRequest( (req, res) => {
+export const listFolders = functions.region("asia-northeast1").https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listFolderHandler();
     res.status(cloudinaryRes.status).send(cloudinaryRes.data);
   });
 });
 
-export const listImagesByTag = functions.https.onRequest( (req, res) => {
+export const listImagesByTag = functions.region("asia-northeast1").https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listImagesByTagHandler(req.query.tag);
     res.status(cloudinaryRes.status).send(cloudinaryRes.data);
   });
 });
 
-export const listImagesInFolder = functions.https.onRequest( (req, res) => {
+export const listImagesInFolder = functions.region("asia-northeast1").https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listImagesInFolderHandler(req.query.folder_name);
     res.status(cloudinaryRes.status).send(cloudinaryRes.data);
