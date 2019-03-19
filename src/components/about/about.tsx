@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './about.css'
+import * as title from "../../helpers/title";
 
 class About extends React.Component {
   public render() {
@@ -23,6 +24,10 @@ class About extends React.Component {
         </div>
       </div>
     )
+  }
+  
+  public componentDidMount = () => {
+    title.set("about");
   }
 }
 
