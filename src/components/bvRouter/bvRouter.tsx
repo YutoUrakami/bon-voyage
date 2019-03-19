@@ -5,7 +5,7 @@ import GripWrapper from '../gridWrapper/gripWrapper'
 import About from '../about/about'
 import NotFound from '../notFound/notFound'
 
-class Router extends React.Component {
+class BvRouter extends React.Component {
   public render() {
     return (
       <Switch>
@@ -32,4 +32,4 @@ class Router extends React.Component {
   }
 }
 
-export default Router;
+export default BvRouter;
