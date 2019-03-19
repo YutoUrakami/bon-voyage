@@ -62,6 +62,12 @@ export const listingInFolder = (folderName: string) => {
   };
 };
 
+export const updateSlideShowIndex = (newIndex: number) => {
+  return (dispatch: Dispatch) => {
+    dispatch(updateIndex(newIndex));
+  }
+};
+
 export const topImages = () => {
   return (dispatch: Dispatch) => {
     const images: Image[] = [

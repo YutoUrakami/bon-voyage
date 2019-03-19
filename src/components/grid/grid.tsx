@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from '../../models/image'
-import {updateIndex} from "../../reducers/imagesListReducer";
+import {updateSlideShowIndex} from "../../reducers/imagesListReducer";
 import {FolderListState, ImagesListState} from "../../store";
-import SlideShow from "../slideShow/slideShow";
 import './grid.css'
 import Loading from "../loading/loading";
 import {CSSTransition} from "react-transition-group";
+import Modal from "../modal/modal"
+import {showModal} from "../../reducers/modalReducer";
 
 interface GridProps {
   images: Image[],
@@ -39,7 +40,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
                     mountOnEnter={true}
                     timeout={750}
                     key={img.publicId}>
-                    <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
+                    <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.onClickThumbnail}>
                       <img src={this.imgThumbnailUrl(img.src)} alt={img.caption}/>
                       <div className="grid_item_mask">
                         <div className="caption">{img.caption}</div>
@@ -50,14 +51,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
               })}
             </div>
           </div>
-          <div className="modal_window" id="slideModal" onClick={this.closeModal}>
-            <div className="modal_content">
-              <SlideShow/>
-            </div>
-            <div className="modal-close-button" onClick={this.closeModal}>
-              <i className="material-icons">close</i>
-            </div>
-          </div>
+          <Modal/>
         </React.Fragment>
       )
     }
@@ -69,26 +63,15 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
     return [originalUrl.slice(0, insertIndex), `c_thumb,h_720,w_720/`, originalUrl.slice(insertIndex)].join('');
   };
 
-  private launchModal = (event: React.MouseEvent<HTMLDivElement>) => {
+  private onClickThumbnail = (event: React.MouseEvent<HTMLDivElement>) => {
     const gridItem = event.currentTarget.closest(".grid_item");
     if (!gridItem) {
       return;
     }
     const index = parseInt(gridItem.id, 10);
-    this.props.dispatch(updateIndex(index));
-    const slideModal = document.getElementById("slideModal");
-    if (slideModal) {
-      slideModal.style.display = "block";
-    }
+    updateSlideShowIndex(index)(this.props.dispatch);
+    showModal()(this.props.dispatch);
   };
-
-  private closeModal = () => {
-    this.props.dispatch(updateIndex(-1));
-    const slideModal = document.getElementById("slideModal");
-    if (slideModal) {
-      slideModal.style.display = "none";
-    }
-  }
 }
 
 export default withRouter(connect(
