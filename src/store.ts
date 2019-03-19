@@ -24,6 +24,10 @@ export interface SwipeHandlerState {
   registered: boolean
 }
 
+export interface ModalState {
+  show: boolean
+}
+
 export const generateStore = () => {
   return createStore(rootReducer, applyMiddleware(thunk))
 };
