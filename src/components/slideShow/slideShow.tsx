@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from "../../models/image";
-import {updateIndex} from "../../reducers/imagesListReducer";
+import {updateSlideShowIndex} from "../../reducers/imagesListReducer";
 import Panel from '../panel/panel';
 import './slideShow.css'
 import {CSSTransition} from 'react-transition-group'
@@ -110,7 +110,7 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
     if (nextIndex < 0) {
       nextIndex = this.props.images.length - 1
     }
-    this.props.dispatch(updateIndex(nextIndex));
+    updateSlideShowIndex(nextIndex)(this.props.dispatch);
   };
 
   private next = () => {
@@ -118,7 +118,7 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
     if (this.props.images.length <= nextIndex) {
       nextIndex = 0
     }
-    this.props.dispatch(updateIndex(nextIndex));
+    updateSlideShowIndex(nextIndex)(this.props.dispatch);
   };
 
   private onClickLeft = (event: React.MouseEvent<HTMLDivElement>) => {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
-import {updateIndex} from "../../reducers/imagesListReducer";
+import {updateSlideShowIndex} from "../../reducers/imagesListReducer";
 import SlideShow from "../slideShow/slideShow";
 import './modal.css'
 import {ModalState} from "../../store";
@@ -50,7 +50,7 @@ class Modal extends React.Component<ModalProps & DispatchProps & RouteComponentP
   };
 
   private closeModal = () => {
-    this.props.dispatch(updateIndex(-1));
+    updateSlideShowIndex(-1)(this.props.dispatch);
     const slideModal = document.getElementById("slideModal");
     if (slideModal) {
       slideModal.style.display = "none";

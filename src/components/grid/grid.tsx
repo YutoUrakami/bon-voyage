@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {RouteComponentProps, withRouter} from "react-router";
 import {Dispatch} from "redux";
 import {Image} from '../../models/image'
-import {updateIndex} from "../../reducers/imagesListReducer";
+import {updateSlideShowIndex} from "../../reducers/imagesListReducer";
 import {FolderListState, ImagesListState} from "../../store";
 import './grid.css'
 import Loading from "../loading/loading";
@@ -69,7 +69,7 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
       return;
     }
     const index = parseInt(gridItem.id, 10);
-    this.props.dispatch(updateIndex(index));
+    updateSlideShowIndex(index)(this.props.dispatch);
     showModal()(this.props.dispatch);
   };
 }
