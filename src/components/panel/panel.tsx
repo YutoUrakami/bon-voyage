@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './panel.css'
 import * as copyright from "../../helpers/copyright";
+import {ImageMetadata} from "../../models/imageMetadata";
 
 interface PanelProps {
   srcURL: string,
-  caption: string
+  metadata: ImageMetadata
 }
 
 class Panel extends React.Component<PanelProps> {
@@ -13,7 +14,7 @@ class Panel extends React.Component<PanelProps> {
       <div className="panel">
         <img 
           src={this.props.srcURL}
-          alt={this.props.caption}
+          alt=""
           id="protection"
           onClick={this.onClickImg}
           onContextMenu={this.onProtectionContextMenu}

@@ -1,25 +1,27 @@
 import axios = require('axios');
 import env = require('../env');
 import {Image} from '../models/image'
+import {emptyMetadata, ImageMetadata} from "../models/imageMetadata";
 
 const cloudFunctions = axios.default.create({
   baseURL: env.functionsEndpoint
 });
 
-const getCaption = (context?: { [key: string]: any }) => {
+const getMetadata = (context?: { [key: string]: any }) => {
   if (!context) {
-    return ''
+    return emptyMetadata;
   }
   const custom = context.custom;
   if (!custom) {
-    return ''
+    return emptyMetadata;
   }
-  return custom.caption;
+  return new ImageMetadata(custom.camera || "", custom.lens, custom.film, custom.model);
 };
 
 const toImagesArray = (resources: Array<{ [key: string]: any }>) => {
   return resources.map((resource) => {
-    return new Image(resource.public_id, resource.secure_url, getCaption(resource.context))
+    window.console.log(resource);
+    return new Image(resource.public_id, resource.secure_url, getMetadata(resource.context))
   });
 }; 
 

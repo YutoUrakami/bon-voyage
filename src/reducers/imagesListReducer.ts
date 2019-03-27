@@ -2,6 +2,7 @@ import {Dispatch, Reducer} from "redux";
 import {Image} from "../models/image";
 import * as cf from "../services/cloudFunctions"
 import {ImagesListState} from "../store";
+import {emptyMetadata} from "../models/imageMetadata";
 
 const LISTING = "LISTING";
 const LISTED_IMAGES = "LISTED_IMAGES";
@@ -71,11 +72,11 @@ export const updateSlideShowIndex = (newIndex: number) => {
 export const topImages = () => {
   return (dispatch: Dispatch) => {
     const images: Image[] = [
-      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294452/un_fils/009.jpg", ""),
-      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/010.jpg", ""),
-      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/006.jpg", ""),
-      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/003.jpg", ""),
-      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1551005819/un_fils/001.jpg", "")
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294452/un_fils/009.jpg", emptyMetadata),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/010.jpg", emptyMetadata),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/006.jpg", emptyMetadata),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1552294451/un_fils/003.jpg", emptyMetadata),
+      new Image("", "https://res.cloudinary.com/dh3lelkhn/image/upload/v1551005819/un_fils/001.jpg", emptyMetadata)
     ];
     dispatch(listedImages(images, 0))
   }

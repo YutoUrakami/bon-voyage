@@ -27,6 +27,7 @@ export const listImagesInFolderHandler = async (folderName: string) => {
         params: {
           prefix: `${folderName}/`,
           context: true,
+          image_metadata: true,
           max_results: 500
         }
       });

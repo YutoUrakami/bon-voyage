@@ -1,5 +1,7 @@
+import {ImageMetadata} from "./imageMetadata";
+
 export class Image {
-  constructor(private _publicId: string, private _src: string, private _caption: any) {
+  constructor(private _publicId: string, private _src: string, private _metadata: ImageMetadata) {
   }
   get publicId(): string {
     return this._publicId;
@@ -7,7 +9,7 @@ export class Image {
   get src(): string {
     return this._src;
   }
-  get caption(): any {
-    return this._caption;
+  get metadata(): ImageMetadata {
+    return this._metadata;
   }
 }

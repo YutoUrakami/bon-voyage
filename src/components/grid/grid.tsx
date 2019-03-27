@@ -40,9 +40,9 @@ class Grid extends React.Component<GridProps & DispatchProps & RouteComponentPro
                     timeout={750}
                     key={img.publicId}>
                     <div key={img.publicId} className="grid_item" id={index.toString(10)} onClick={this.launchModal}>
-                      <img src={this.imgThumbnailUrl(img.src)} alt={img.caption}/>
+                      <img src={this.imgThumbnailUrl(img.src)} alt=""/>
                       <div className="grid_item_mask">
-                        <div className="caption">{img.caption}</div>
+                        <div className="caption">{img.metadata.model || ""}</div>
                       </div>
                     </div>
                   </CSSTransition>

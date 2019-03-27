@@ -48,7 +48,7 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
                 mountOnEnter={true}
                 timeout={750}
                 key={img.publicId}>
-                <Panel srcURL={img.src} caption={img.caption} key={img.publicId}/>
+                <Panel srcURL={img.src} metadata={img.metadata} key={img.publicId}/>
               </CSSTransition>
             )}
           </div>
