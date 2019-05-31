@@ -22,3 +22,5 @@ yarn-error.log*
 .runtimeconfig.json
 
 *.log
+
+.node-version
