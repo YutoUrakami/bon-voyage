@@ -11,16 +11,25 @@ class Panel extends React.Component<PanelProps> {
   public render() {
     return (
       <div className="panel">
-        <img 
-          src={this.props.srcURL}
-          alt={this.props.caption}
-          id="protection"
-          onClick={this.onClickImg}
-          onContextMenu={this.onProtectionContextMenu}
-        />
+        <div className="mount">
+          <img
+            src={this.imgUrl()}
+            alt={this.props.caption}
+            id="protection"
+            onClick={this.onClickImg}
+            onContextMenu={this.onProtectionContextMenu}
+          />
+        </div>
       </div>
     );
   }
+  
+  private imgUrl = () => {
+    const original = this.props.srcURL;
+    const searchStr = '/image/upload/';
+    const insertIndex = original.indexOf(searchStr) + searchStr.length;
+    return [original.slice(0, insertIndex), `c_fit,h_1400,w_1400/`, original.slice(insertIndex)].join('');
+  };
 
   private onProtectionContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     const x = event.pageX;
