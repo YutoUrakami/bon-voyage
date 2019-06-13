@@ -6,7 +6,7 @@ build/dev:
 build/prd:
 	REACT_APP_SITE_ENDPOINT=$(SITE_ENDPOINT) yarn build
 serve: build/dev
-	firebase serve
+	DEBUG=* firebase serve --only hosting,functions
 deploy: build/prd
 	firebase deploy
 deploy/functions:
