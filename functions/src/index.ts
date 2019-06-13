@@ -19,7 +19,7 @@ const cors = CORS({
   origin: originStr 
 });
 
-export const listFolders = functions.region("asia-northeast1").https.onRequest( (req, res) => {
+export const listFolders = functions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listFolderHandler();
     res.set('Cache-Control', cacheControl)
@@ -28,7 +28,7 @@ export const listFolders = functions.region("asia-northeast1").https.onRequest( 
   });
 });
 
-export const listImagesByTag = functions.region("asia-northeast1").https.onRequest( (req, res) => {
+export const listImagesByTag = functions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listImagesByTagHandler(req.query.tag);
     res.set('Cache-Control', cacheControl)
@@ -37,7 +37,7 @@ export const listImagesByTag = functions.region("asia-northeast1").https.onReque
   });
 });
 
-export const listImagesInFolder = functions.region("asia-northeast1").https.onRequest( (req, res) => {
+export const listImagesInFolder = functions.https.onRequest( (req, res) => {
   cors(req, res, async () => {
     const cloudinaryRes = await listImagesInFolderHandler(req.query.folder_name);
     res.set('Cache-Control', cacheControl)
