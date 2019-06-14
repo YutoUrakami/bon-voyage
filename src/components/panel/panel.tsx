@@ -4,13 +4,14 @@ import * as copyright from "../../helpers/copyright";
 
 interface PanelProps {
   srcURL: string,
-  caption: string
+  caption: string,
+  transitionClassName: string
 }
 
 class Panel extends React.Component<PanelProps> {
   public render() {
     return (
-      <div className="panel">
+      <div className={`panel ${this.props.transitionClassName}`}>
         <div className="mount">
           <img
             src={this.imgUrl()}

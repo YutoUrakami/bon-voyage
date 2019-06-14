@@ -38,27 +38,19 @@
   -ms-user-select: none;
   user-select: none;
 }
-.fade-appear {
-  opacity: 0.0;
+.fade {
+  transition: opacity 300ms ease-in-out;
+  opacity: 0;
 }
-.fade-appear-active {
-  opacity: 1.0;
-  transition: all 250ms;
-}
-.fade-enter {
-  opacity: 0.0;
-}
-.fade-enter-active {
-  opacity: 1.0;
-  transition: all 250ms;
-}
-.fade-exit {
+.fade-entering {
   opacity: 1.0;
 }
-.fade-exit-active {
-  opacity: 0.0;
-  transition: all 250ms;
+.fade-entered {
+  opacity: 1.0;
 }
-.fade-exit-done {
-  display: none !important;
+.fade-exiting {
+  opacity: 0.0;
+}
+.fade-exited {
+  opacity: 0.0;
 }
