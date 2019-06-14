@@ -6,7 +6,7 @@ import {Image} from "../../models/image";
 import {updateSlideShowIndex} from "../../reducers/imagesListReducer";
 import Panel from '../panel/panel';
 import './slideShow.css'
-import {CSSTransition} from 'react-transition-group'
+import {Transition} from 'react-transition-group'
 import Loading from '../loading/loading'
 import {FolderListState, ImagesListState, BurgerMenuState, SwipeHandlerState} from "../../store";
 import * as Hammer from 'hammerjs'
@@ -41,15 +41,17 @@ class SlideShow extends React.Component<SlideShowProps & DispatchProps & RouteCo
         <div className="slide-container">
           <div className="slide-box" id="slide-box">
             {this.props.images.map((img, index) =>
-              <CSSTransition
-                classNames="fade"
+              <Transition
                 in={index === this.props.index}
-                appear={true}
-                mountOnEnter={true}
-                timeout={750}
+                timeout={300}
                 key={img.publicId}>
-                <Panel srcURL={img.src} caption={img.caption} key={img.publicId}/>
-              </CSSTransition>
+                {status => (
+                  <Panel srcURL={img.src}
+                         caption={img.caption}
+                         transitionClassName={`fade fade-${status}`}
+                  />
+                )}
+              </Transition>
             )}
           </div>
           <div className="slide-navigation-left">
