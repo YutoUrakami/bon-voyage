@@ -25,10 +25,11 @@ class Panel extends React.Component<PanelProps> {
   }
   
   private imgUrl = () => {
+    const length = Math.min(window.parent.screen.width, window.parent.screen.height * 0.8, 1400);
     const original = this.props.srcURL;
     const searchStr = '/image/upload/';
     const insertIndex = original.indexOf(searchStr) + searchStr.length;
-    return [original.slice(0, insertIndex), `c_fit,h_1400,w_1400/`, original.slice(insertIndex)].join('');
+    return [original.slice(0, insertIndex), `c_fit,h_${length},w_${length}/`, original.slice(insertIndex)].join('');
   };
 
   private onProtectionContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
